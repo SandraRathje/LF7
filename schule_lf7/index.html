@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Warnmelder</title>
+   <link rel="stylesheet" href="style.css">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+</head>
+
+<body>
+   <section>
+      <h1>
+         Warnmeldung
+      </h1>
+      <hr>
+      <table id="customers">
+         <tr>
+            <th>ID</th>
+            <th>WarnStatus</th>
+            <th>Timestamp</th>
+         </tr>
+         <tr>
+            <td>1</td>
+            <td>SEHR HOCH</td>
+            <td>2023-09-29 11:54:55</td>
+         </tr>
+         <tr>
+            <td>2</td>
+            <td>SEHR HOCH</td>
+            <td>2023-09-29 11:54:55</td>
+         </tr>
+         <tr>
+            <td>3</td>
+            <td>SEHR HOCH</td>
+            <td>2023-09-29 11:54:55</td>
+         </tr>
+         <tr>
+            <td>4</td>
+            <td>SEHR HOCH</td>
+            <td>2023-09-29 11:54:55</td>
+         </tr>
+         <tr>
+            <td>5</td>
+            <td>SEHR HOCH</td>
+            <td>2023-09-29 11:54:55</td>
+         </tr>
+      </table>
+      <hr>
+      <button id="button" onclick="alarm()" type="button">Play Warning</button>
+   </section>
+   <section class="chartsWarn">
+      <h2>Wasserstand Diagram:</h2>
+      <canvas id="myChart"></canvas>
+   </section>
+   <audio id="sound">
+      <source src="sound.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+   </audio>
+   <script>
+      // Get a reference to your canvas element
+      // Get a reference to your canvas element
+      var ctx = document.getElementById('myChart').getContext('2d');
+      const difValue = [0, 90, 200, 100, 302, 210, 322, 20, 40, 60, 90, 220, 110, 1000, 100];
+
+      // Create your chart
+      var myChart = new Chart(ctx, {
+         type: 'line',
+         data: {
+            labels: [],
+            datasets: [{
+               label: 'Wasserstand',
+               data: [], // Your data goes here
+               backgroundColor: 'rgba(75, 192, 192, 0.2)', // Color for bars/lines
+               borderColor: 'rgba(75, 192, 192, 1)', // Border color
+               borderWidth: 1 // Border width
+            }]
+         },
+         options: {
+            responsive: true,
+            animation: true
+         }
+      });
+
+      // Überprüft Jede Sekunde
+      function updateChart() {
+         const now = new Date();
+         const currentMinute = now.getMinutes();
+         const currentHour = now.getHours();
+         let xValues = [];
+
+         for (let i = 14; i >= 0; i--) {
+            const minute = (currentMinute - i + 60) % 60; // Handle wrapping around at 0
+            if (i === 0) {
+                  // Special case for the last minute
+                  xValues.push(`${currentHour}:${minute < 10 ? '0' : ''}${minute}`);
+            } else {
+                  xValues.push(`Vor ${i} Min`);
+            }
+         }
+
+         myChart.data.labels = xValues;
+         myChart.data.datasets[0].data = difValue; // Wert von Datenbank
+         myChart.update();
+      }
+
+      setInterval(updateChart, 1000);
+   </script>
+   <script src="js.js"></script>
+</body>
+
+</html>

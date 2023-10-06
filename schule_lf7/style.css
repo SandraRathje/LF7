@@ -1,0 +1,125 @@
+* {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: rgb(40, 35, 58);
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+#beforeHeader {
+  padding-top: 9rem;
+}
+#header {
+  position: fixed;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  background-color: rgb(39, 34, 57);
+  margin: 0;
+  padding: 0;
+}
+section {
+  background-color: rgb(69, 48, 84);
+  width: 100%;
+}
+#tabled {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: white;
+}
+
+#tabled td,
+#tabled th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tabled tr:nth-child(even) {
+  background-color: #f2f2f220;
+}
+#tabled tr {
+  transition: all 200ms ease;
+}
+#tabled tr:hover {
+  background-color: #000000;
+  color: rgb(201, 28, 28);
+}
+
+#tabled th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04aa6d90;
+  color: rgb(255, 255, 255);
+}
+h1 {
+  text-align: center;
+  color: wheat;
+  margin: 0;
+  padding: 1.2rem 0;
+  font-family: sans-serif;
+  font-size: 2rem;
+}
+.chartsWarn {
+  width: 70%;
+  display: block;
+  margin: 4rem auto;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+.showWarning,
+.showOk {
+  max-width: 70%;
+  margin: 0 auto;
+  margin-top: 2rem;
+  text-align: center;
+  color: white;
+  font-family: sans-serif;
+  padding: 2rem 1rem;
+  border-radius: 15px;
+  background-color: rgb(84, 48, 48);
+  box-shadow: 0px 0px 19px 5px rgb(126 32 32 / 62%);
+}
+.showWarning span,
+.showOk span {
+  font-size: 3rem;
+  color: rgb(192, 57, 57);
+  font-weight: bold;
+}
+.showOk {
+  background-color: rgb(48, 84, 65);
+  box-shadow: 0px 0px 19px 5px rgba(32, 126, 41, 0.62);
+}
+.showOk span {
+  color: rgb(57, 192, 95);
+}
+.links {
+  display: block;
+  text-align: center;
+}
+.links a {
+  background-color: aquamarine;
+  padding: 1rem;
+  border-radius: 20px;
+  text-decoration-line: none;
+  color: black;
+  transition: all 300ms ease;
+}
+.links a:hover {
+  background-color: rgb(0, 62, 41);
+  color: rgb(255, 255, 255);
+}
+#warnedP {
+  color: rgb(192, 57, 57);
+  font-weight: bold;
+}
+#allokP {
+  color: rgb(57, 192, 95);
+  font-weight: bold;
+}
